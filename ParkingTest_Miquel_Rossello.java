@@ -13,14 +13,10 @@ import java.util.Scanner;
 public class ParkingTest_Miquel_Rossello {
     //colores
     private static final String ANSI_RESET  = "\u001B[0m";
-    private static final String ANSI_BLACK  = "\u001B[30m";
     private static final String ANSI_RED    = "\u001B[31m";
     private static final String ANSI_GREEN  = "\u001B[32m";
     private static final String ANSI_YELLOW = "\u001B[33m";
     private static final String ANSI_BLUE   = "\u001B[34m";
-    private static final String ANSI_PURPLE = "\u001B[35m";
-    private static final String ANSI_CYAN   = "\u001B[36m";
-    private static final String ANSI_WHITE  = "\u001B[37m";
 
     Scanner sc = new Scanner(System.in);
     private final ArrayList<String> menu = new ArrayList<>(Arrays.asList(
@@ -63,13 +59,13 @@ public class ParkingTest_Miquel_Rossello {
                     case 1 -> { //entrar coche normal
                         System.out.println("introduzca la matricula");
                         this.pmr.entraCoche(this.sc.next());
-                        if (this.pmr.getPlazasLibres(TipoPlazaParking.NO_DISCAPACITADO)>=this.pmr.getPlazasLibres(TipoPlazaParking.NO_DISCAPACITADO)*0.85) throw new ParkingOcupacion85Exception(TipoPlazaParking.NO_DISCAPACITADO);
+                        if (this.pmr.getPlazasLibres(TipoPlazaParking.NO_DISCAPACITADO)<=this.pmr.getPlazasLibres(TipoPlazaParking.NO_DISCAPACITADO)*0.85) throw new ParkingOcupacion85Exception(TipoPlazaParking.NO_DISCAPACITADO);
                     }
 
                     case 2 -> { //entrar coche discapacitado
                         System.out.println("introduzca la matricula");
                         this.pmr.entraCocheDiscapacitado(this.sc.next());
-                        if (this.pmr.getPlazasLibres(TipoPlazaParking.DISCAPACITADO)>=this.pmr.getPlazasLibres(TipoPlazaParking.DISCAPACITADO)*0.85) throw new ParkingOcupacion85Exception(TipoPlazaParking.DISCAPACITADO);
+                        if (this.pmr.getPlazasLibres(TipoPlazaParking.DISCAPACITADO)<=this.pmr.getPlazasLibres(TipoPlazaParking.DISCAPACITADO)*0.85) throw new ParkingOcupacion85Exception(TipoPlazaParking.DISCAPACITADO);
                     }
 
                     case 3 -> { //sale coche normal
